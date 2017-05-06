@@ -32,4 +32,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-exec mate-session
+for desession in mate-session startxfce4 startlxqt startdde
+do
+	which $desession && exec $desession
+done
