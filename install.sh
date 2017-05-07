@@ -4,8 +4,34 @@ set -e
 ROOTDIR="$(dirname $(realpath "$0"))"
 WORKDIR=/tmp/work
 ISO="$(realpath "$1")"
-MIRROR="$2"
-DESKTOP="$3"
+MIRROR=
+DESKTOP=
+
+shift
+while [ -n "$1" ]; do
+	case "$1" in
+		--mirror)
+			shift
+			MIRROR="$1"
+			shift
+			;;
+		--mirror=*)
+			MIRROR="${1/--mirror=}"
+			shift
+			;;
+		--desktop)
+			shift
+			DESKTOP="$1"
+			shift
+			;;
+		--desktop=*)
+			DESKTOP="${1/--desktop=}"
+			shift
+			;;
+		*)
+			;;
+	esac
+done
 
 mkdir -p "${WORKDIR}/mnt"
 
@@ -27,7 +53,7 @@ mount -t sysfs none squashfs-root/sys
 mount --bind "${PKGDIR}" squashfs-root/var/cache/pacman/pkg
 cp -L /etc/resolv.conf squashfs-root/etc/resolv.conf
 cp "${ROOTDIR}/chroot-install.sh" squashfs-root/
-chroot squashfs-root /usr/bin/env MIRROR="${MIRROR}" \
+chroot squashfs-root /usr/bin/env MIRROR="${MIRROR}" DESKTOP="${DESKTOP}" \
 	/bin/bash /chroot-install.sh
 
 rm squashfs-root/chroot-install.sh
