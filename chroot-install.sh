@@ -37,7 +37,7 @@ echo "Server = ${MIRROR}" > /etc/pacman.d/mirrorlist
 
 pacman --noconfirm -Syu --needed \
 	qemu flashrom debootstrap htop \
-	dmidecode procinfo-ng \
+	iasl dmidecode procinfo-ng efibootmgr ovmf \
 	ttf-droid ttf-dejavu \
 	xorg xorg-apps xorg-xinit "${DESKTOP[@]}" \
 	xf86-input-wacom \
