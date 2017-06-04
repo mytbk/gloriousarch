@@ -40,6 +40,7 @@ pacman --noconfirm -Syu --needed \
 	iasl dmidecode procinfo-ng efibootmgr ovmf \
 	ttf-droid ttf-dejavu \
 	xorg xorg-apps xorg-xinit "${DESKTOP[@]}" \
+	bash-completion zsh-completions \
 	xf86-input-wacom \
 	gparted \
 	firefox \
@@ -49,6 +50,7 @@ mv /etc/pacman.conf.bak /etc/pacman.conf
 mv /etc/pacman.d/mirrorlist.bak /etc/pacman.d/mirrorlist
 
 useradd -m -G wheel arch
+echo arch:arch | chpasswd
 sed -i 's/^# %wheel/%wheel/g' /etc/sudoers
 sed -i 's/root/arch/g' /etc/systemd/system/getty@tty1.service.d/autologin.conf
 
