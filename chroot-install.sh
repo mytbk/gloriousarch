@@ -36,10 +36,12 @@ cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 echo "Server = ${MIRROR}" > /etc/pacman.d/mirrorlist
 
 pacman --noconfirm -Syu --needed \
+	base-devel \
 	qemu flashrom debootstrap htop \
 	iasl dmidecode procinfo-ng efibootmgr ovmf \
+	picocom \
 	ttf-droid ttf-dejavu \
-	xorg xorg-apps xorg-xinit "${DESKTOP[@]}" \
+	xorg xorg-apps xorg-drivers xorg-xinit "${DESKTOP[@]}" \
 	bash-completion zsh-completions \
 	xf86-input-wacom \
 	gparted \
@@ -49,7 +51,7 @@ pacman --noconfirm -Syu --needed \
 mv /etc/pacman.conf.bak /etc/pacman.conf
 mv /etc/pacman.d/mirrorlist.bak /etc/pacman.d/mirrorlist
 
-useradd -m -G wheel arch
+useradd -m -G wheel arch uucp
 echo arch:arch | chpasswd
 sed -i 's/^# %wheel/%wheel/g' /etc/sudoers
 sed -i 's/root/arch/g' /etc/systemd/system/getty@tty1.service.d/autologin.conf
