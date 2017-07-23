@@ -51,7 +51,7 @@ pacman --noconfirm -Syu --needed \
 mv /etc/pacman.conf.bak /etc/pacman.conf
 mv /etc/pacman.d/mirrorlist.bak /etc/pacman.d/mirrorlist
 
-useradd -m -G wheel arch uucp
+useradd -m -G wheel,uucp arch
 echo arch:arch | chpasswd
 sed -i 's/^# %wheel/%wheel/g' /etc/sudoers
 sed -i 's/root/arch/g' /etc/systemd/system/getty@tty1.service.d/autologin.conf
