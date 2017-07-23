@@ -58,6 +58,7 @@ chroot squashfs-root /usr/bin/env MIRROR="${MIRROR}" DESKTOP="${DESKTOP}" \
 
 rm squashfs-root/chroot-install.sh
 install "${ROOTDIR}/xinitrc" squashfs-root/home/arch/.xinitrc
+cp "${ROOTDIR}/motd" squashfs-root/etc/
 
 umount squashfs-root/var/cache/pacman/pkg
 umount squashfs-root/sys
