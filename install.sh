@@ -5,7 +5,7 @@ ROOTDIR="$(dirname $(realpath "$0"))"
 WORKDIR=/tmp/work
 ISO="$(realpath "$1")"
 MIRROR=
-DESKTOP=
+DESKTOP=mate
 
 shift
 while [ -n "$1" ]; do
@@ -45,6 +45,12 @@ fi
 
 cd "${WORKDIR}"
 mount "$ISO" mnt
+
+# copy all iso files to target/
+mkdir -p target/arch/x86_64
+cp -a mnt/{EFI,isolinux,loader} target/
+cp -a mnt/arch/boot target/arch/
+
 unsquashfs mnt/arch/x86_64/airootfs.sfs
 
 mount -t proc none squashfs-root/proc
@@ -65,7 +71,21 @@ umount squashfs-root/sys
 umount squashfs-root/dev
 umount squashfs-root/proc
 
-mksquashfs squashfs-root airootfs.sfs
+mksquashfs squashfs-root target/arch/x86_64/airootfs.sfs
 umount mnt
 
-echo "airootfs.sfs is at ${WORKDIR}/airootfs.sfs"
+_label_line=$(grep -1 -o  'archisolabel=ARCH_[0-9]*' target/arch/boot/syslinux/archiso_sys.cfg)
+iso_label=${_label_line/archisolabel=}
+
+xorriso -as mkisofs \
+	-iso-level 3 \
+	-full-iso9660-filenames \
+	-volid "${iso_label}" \
+	-eltorito-boot isolinux/isolinux.bin \
+	-eltorito-catalog isolinux/boot.cat \
+	-no-emul-boot -boot-load-size 4 -boot-info-table \
+	-isohybrid-mbr target/isolinux/isohdpfx.bin \
+	-output "gloriousarch-${DESKTOP}.iso" \
+	target/
+
+echo "gloriousarch.iso is at ${WORKDIR}/gloriousarch-${DESKTOP}.iso"
