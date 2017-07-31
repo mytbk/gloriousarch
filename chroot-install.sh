@@ -30,13 +30,14 @@ pacman-key --populate archlinux
 
 cp /etc/pacman.conf /etc/pacman.conf.bak
 sed -i 's/CheckSpace/#CheckSpace/g' /etc/pacman.conf
-sed -i 's/^#IgnorePkg.*$/IgnorePkg = linux linux-firmware/g' /etc/pacman.conf
 
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 echo "Server = ${MIRROR}" > /etc/pacman.d/mirrorlist
 
 pacman --noconfirm -Syu --needed \
 	base-devel \
+	linux linux-headers dkms archiso \
+	wireguard-dkms wireguard-tools \
 	qemu flashrom debootstrap htop \
 	iasl dmidecode procinfo-ng efibootmgr ovmf \
 	picocom \
@@ -47,6 +48,8 @@ pacman --noconfirm -Syu --needed \
 	gparted \
 	firefox \
 	pidgin pidgin-otr
+
+mkinitcpio -p archiso
 
 mv /etc/pacman.conf.bak /etc/pacman.conf
 mv /etc/pacman.d/mirrorlist.bak /etc/pacman.d/mirrorlist

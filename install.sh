@@ -59,12 +59,17 @@ mount -t sysfs none squashfs-root/sys
 mount --bind "${PKGDIR}" squashfs-root/var/cache/pacman/pkg
 cp -L /etc/resolv.conf squashfs-root/etc/resolv.conf
 cp "${ROOTDIR}/chroot-install.sh" squashfs-root/
+install -D "${ROOTDIR}/archiso.preset" squashfs-root/etc/mkinitcpio.d/
 chroot squashfs-root /usr/bin/env MIRROR="${MIRROR}" DESKTOP="${DESKTOP}" \
 	/bin/bash /chroot-install.sh
 
 rm squashfs-root/chroot-install.sh
 install "${ROOTDIR}/xinitrc" squashfs-root/home/arch/.xinitrc
 cp "${ROOTDIR}/motd" squashfs-root/etc/
+mv squashfs-root/boot/vmlinuz-linux target/arch/boot/x86_64/vmlinuz
+mv squashfs-root/boot/initramfs-linux.img target/arch/boot/x86_64/archiso.img
+mv squashfs-root/boot/intel-ucode.img target/arch/boot/intel_ucode.img
+rm squashfs-root/boot/initramfs*
 
 umount squashfs-root/var/cache/pacman/pkg
 umount squashfs-root/sys
