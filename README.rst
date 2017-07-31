@@ -31,10 +31,14 @@ Example::
 Packages
 --------
 
-I need these tools in my Live CD:
+I now have these tools in my Live CD:
 
-- flashrom and coreboot utilities: to access or flash coreboot to my machine
+- a good desktop environment: now gloriousarch has MATE, Xfce, LXQt and DDE support
+- QEMU: to install other OS with an ISO image, including Windows (using my disk as virtual disk). This is the most glorious feature of this Live CD.
+- flashrom: to flash coreboot to my machine
+- gparted: the glorious partition manager
 - debootstrap: to install a Debian-based system easily
-- qemu: to install other OS with an ISO image (using my disk as virtual disk)
-- a good desktop environment
-
+- Firefox to access the Internet
+- Pidgin to chat, and it should support OTR
+- picocom: to access the serial console
+- WireGuard VPN
