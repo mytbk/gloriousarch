@@ -42,3 +42,11 @@ I now have these tools in my Live CD:
 - Pidgin to chat, and it should support OTR
 - picocom: to access the serial console
 - WireGuard VPN
+
+
+Download
+--------
+
+I build a gloriousarch Xfce4 iso and uploaded it to badwin10.org:
+
+- [gloriousarch-xfce-20170802.iso](https://badwin10.org/gloriousarch-xfce-20170802.iso) [sig](https://badwin10.org/gloriousarch-xfce-20170802.iso.sig)
