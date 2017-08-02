@@ -47,6 +47,6 @@ I now have these tools in my Live CD:
 Download
 --------
 
-I build a gloriousarch Xfce4 iso and uploaded it to badwin10.org:
+I built a gloriousarch Xfce4 iso and uploaded it to badwin10.org. It's signed by a PGP key whose primary key fingerprint is 0x9E5B817BFF338DD701676C276DBD8BFE8600BEAA:
 
 - `gloriousarch-xfce-20170802.iso <https://badwin10.org/gloriousarch-xfce-20170802.iso>`_ `sig <https://badwin10.org/gloriousarch-xfce-20170802.iso.sig>`_
