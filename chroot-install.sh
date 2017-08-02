@@ -34,9 +34,11 @@ sed -i 's/CheckSpace/#CheckSpace/g' /etc/pacman.conf
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 echo "Server = ${MIRROR}" > /etc/pacman.d/mirrorlist
 
+# (re)install linux because the Linux image is not present
+pacman --noconfirm -Sy linux
 pacman --noconfirm -Syu --needed \
 	base-devel \
-	linux linux-headers dkms archiso \
+	linux-headers dkms archiso \
 	wireguard-dkms wireguard-tools \
 	qemu flashrom debootstrap htop \
 	iasl dmidecode procinfo-ng efibootmgr ovmf \

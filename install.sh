@@ -68,7 +68,10 @@ install "${ROOTDIR}/xinitrc" squashfs-root/home/arch/.xinitrc
 cp "${ROOTDIR}/motd" squashfs-root/etc/
 mv squashfs-root/boot/vmlinuz-linux target/arch/boot/x86_64/vmlinuz
 mv squashfs-root/boot/initramfs-linux.img target/arch/boot/x86_64/archiso.img
-mv squashfs-root/boot/intel-ucode.img target/arch/boot/intel_ucode.img
+if test -f squashfs-root/boot/intel-ucode.img
+then
+	mv squashfs-root/boot/intel-ucode.img target/arch/boot/intel_ucode.img
+fi
 rm squashfs-root/boot/initramfs*
 
 umount squashfs-root/var/cache/pacman/pkg
