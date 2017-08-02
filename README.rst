@@ -49,4 +49,4 @@ Download
 
 I build a gloriousarch Xfce4 iso and uploaded it to badwin10.org:
 
-- [gloriousarch-xfce-20170802.iso](https://badwin10.org/gloriousarch-xfce-20170802.iso) [sig](https://badwin10.org/gloriousarch-xfce-20170802.iso.sig)
+- `gloriousarch-xfce-20170802.iso <https://badwin10.org/gloriousarch-xfce-20170802.iso>`_ `sig <https://badwin10.org/gloriousarch-xfce-20170802.iso.sig>`_
