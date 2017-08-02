@@ -9,16 +9,18 @@ I need a good Live CD, but I still cannot find a perfect one for me.
 - Debian-based distributions are easy to make, but I don't like the style of deb/rpm packages.
 - Arch is glorious, but its Live CD is a bit simple.
 
-So now I'll make another Arch Live CD of my own. I'll make a new airootfs.sfs from any other GNU/Linux distribution, and make a simple package so that my `liveusb-builder <https://github.com/mytbk/liveusb-builder>`_ can use it.
+So now I'll make another Arch Live CD of my own. I'll make a new airootfs.sfs from any other GNU/Linux distribution, and package it in an iso file. My `liveusb-builder <https://github.com/mytbk/liveusb-builder>`_ also supports it.
+
+The name `glorious` comes from `r/linuxmasterrace <https://www.reddit.com/r/linuxmasterrace>`_.
 
 Usage
 -----
 
 You need root to run the install script, because chroot is needed. The command is very simple::
 
-  sudo ./install.sh <archiso> [--mirror <mirror>] [--mirror=<mirror>] [--desktop <desktop>] [--desktop=<desktop>]
+  sudo ./install.sh <archiso> [--mirror=<mirror>] [--desktop=<desktop>]
 
-The format of <mirror> is the string after ``Server = `` in /etc/pacman.d/mirrorlist.
+The format of <mirror> is the string after ``Server =`` in /etc/pacman.d/mirrorlist.
 
 <desktop> can be ``mate``, ``xfce``, ``dde`` and ``lxqt``.
 
