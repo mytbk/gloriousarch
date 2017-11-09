@@ -38,6 +38,7 @@ echo "Server = ${MIRROR}" > /etc/pacman.d/mirrorlist
 pacman --noconfirm -Sy linux
 pacman --noconfirm -Syu --needed \
 	base-devel \
+	git \
 	linux-headers dkms archiso \
 	wireguard-dkms wireguard-tools \
 	qemu flashrom debootstrap htop \
@@ -49,7 +50,8 @@ pacman --noconfirm -Syu --needed \
 	xf86-input-wacom \
 	gparted \
 	firefox \
-	pidgin pidgin-otr
+	zstd \
+	pidgin pidgin-otr riot-web
 
 mkinitcpio -p archiso
 
