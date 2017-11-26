@@ -14,6 +14,9 @@ case "${DESKTOP}" in
 	xfce)
 		DESKTOP=("${DESKTOP_XFCE[@]}")
 		;;
+	lxde-gtk3)
+		DESKTOP=(lxde-gtk3)
+		;;
 	lxqt)
 		DESKTOP=("${DESKTOP_LXQT[@]}")
 		;;
@@ -52,6 +55,10 @@ pacman --noconfirm -Syu --needed \
 	firefox \
 	zstd \
 	pidgin pidgin-otr riot-web
+
+if /bin/ls /aur/*.pkg.tar.*; then
+	pacman --noconfirm -U /aur/*.pkg.tar.*
+fi
 
 mkinitcpio -p archiso
 

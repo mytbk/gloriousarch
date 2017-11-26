@@ -57,6 +57,10 @@ mount -t proc none squashfs-root/proc
 mount --bind /dev squashfs-root/dev
 mount -t sysfs none squashfs-root/sys
 mount --bind "${PKGDIR}" squashfs-root/var/cache/pacman/pkg
+
+mkdir squashfs-root/aur
+mount --bind "${ROOTDIR}/aur-packages" squashfs-root/aur
+
 cp -L /etc/resolv.conf squashfs-root/etc/resolv.conf
 cp "${ROOTDIR}/chroot-install.sh" squashfs-root/
 install -D "${ROOTDIR}/archiso.preset" squashfs-root/etc/mkinitcpio.d/
@@ -74,6 +78,7 @@ then
 fi
 rm squashfs-root/boot/initramfs*
 
+umount squashfs-root/aur
 umount squashfs-root/var/cache/pacman/pkg
 umount squashfs-root/sys
 umount squashfs-root/dev
