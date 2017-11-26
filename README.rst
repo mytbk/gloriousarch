@@ -22,7 +22,7 @@ You need root to run the install script, because chroot is needed. The command i
 
 The format of <mirror> is the string after ``Server =`` in /etc/pacman.d/mirrorlist.
 
-<desktop> can be ``mate``, ``xfce``, ``dde`` and ``lxqt``.
+<desktop> can be ``mate``, ``xfce``, ``dde``, ``lxde-gtk3`` and ``lxqt``.
 
 Default mirror and desktop is TUNA mirror and MATE desktop.
 
