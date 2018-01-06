@@ -6,6 +6,7 @@ WORKDIR=/tmp/work
 ISO="$(realpath "$1")"
 MIRROR=
 DESKTOP=mate
+COMP=gzip
 
 shift
 while [ -n "$1" ]; do
@@ -26,6 +27,10 @@ while [ -n "$1" ]; do
 			;;
 		--desktop=*)
 			DESKTOP="${1/--desktop=}"
+			shift
+			;;
+		--comp)
+			COMP="${1/--comp}"
 			shift
 			;;
 		*)
@@ -88,7 +93,7 @@ umount squashfs-root/sys
 umount squashfs-root/dev
 umount squashfs-root/proc
 
-mksquashfs squashfs-root target/arch/x86_64/airootfs.sfs
+mksquashfs squashfs-root target/arch/x86_64/airootfs.sfs -comp $COMP
 umount mnt
 
 _label_line=$(grep -1 -o  'archisolabel=ARCH_[0-9]*' target/arch/boot/syslinux/archiso_sys.cfg)

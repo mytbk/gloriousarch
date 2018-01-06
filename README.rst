@@ -18,7 +18,9 @@ Usage
 
 You need root to run the install script, because chroot is needed. The command is very simple::
 
-  sudo ./install.sh <archiso> [--mirror=<mirror>] [--desktop=<desktop>]
+  sudo ./install.sh <archiso> [--mirror=<mirror>] [--desktop=<desktop>] [--comp=<gzip|xz>]
+
+To add more packages, you can put your Arch packages to ``aur-packages/``.
 
 The format of <mirror> is the string after ``Server =`` in /etc/pacman.d/mirrorlist.
 
