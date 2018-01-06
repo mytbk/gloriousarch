@@ -69,6 +69,10 @@ chroot squashfs-root /usr/bin/env MIRROR="${MIRROR}" DESKTOP="${DESKTOP}" \
 
 rm squashfs-root/chroot-install.sh
 install "${ROOTDIR}/xinitrc" squashfs-root/home/arch/.xinitrc
+install -d squashfs-root/home/arch/Desktop
+install "${ROOTDIR}/Riot.desktop" squashfs-root/home/arch/Desktop/Riot.desktop
+chroot squashfs-root chown -R arch:arch \
+	/home/arch/.xinitrc /home/arch/Desktop
 cp "${ROOTDIR}/motd" squashfs-root/etc/
 mv squashfs-root/boot/vmlinuz-linux target/arch/boot/x86_64/vmlinuz
 mv squashfs-root/boot/initramfs-linux.img target/arch/boot/x86_64/archiso.img

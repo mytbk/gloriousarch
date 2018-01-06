@@ -1,0 +1,13 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Name=Riot
+GenericName=Riot Web
+Exec=/usr/lib/firefox/firefox /usr/share/webapps/riot/index.html
+Icon=firefox
+Terminal=false
+Type=Application
+StartupNotify=true
+StartupWMClass=Firefox
+Categories=Network;WebBrowser;
+Keywords=web;browser;internet;
