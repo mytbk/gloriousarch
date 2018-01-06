@@ -102,3 +102,6 @@ xorriso -as mkisofs \
 	target/
 
 echo "gloriousarch.iso is at ${WORKDIR}/gloriousarch-${DESKTOP}.iso"
+printf 'clean up...'
+rm -rf squashfs-root target
+echo 'done'
