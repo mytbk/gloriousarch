@@ -68,7 +68,7 @@ mount --bind /dev squashfs-root/dev
 mount -t sysfs none squashfs-root/sys
 mount --bind "${PKGDIR}" squashfs-root/var/cache/pacman/pkg
 
-mkdir squashfs-root/aur
+mkdir -p squashfs-root/aur
 mount --bind "${ROOTDIR}/aur-packages" squashfs-root/aur
 
 cp -L /etc/resolv.conf squashfs-root/etc/resolv.conf
