@@ -57,7 +57,7 @@ pacman --noconfirm -Syu --needed \
 	linux-headers dkms archiso \
 	wireguard-dkms wireguard-tools \
 	flashrom debootstrap htop \
-	iasl dmidecode procinfo-ng efibootmgr \
+	acpid iasl dmidecode procinfo-ng efibootmgr \
 	picocom \
 	bash-completion zsh-completions \
 	zstd \
@@ -80,3 +80,4 @@ if ! grep '^arch:' /etc/passwd; then
 fi
 
 gpgconf --homedir /etc/pacman.d/gnupg/ --kill gpg-agent
+rm -f /etc/udev/rules.d/81-dhcpcd.rules
