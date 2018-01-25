@@ -7,7 +7,15 @@ DESKTOP_XFCE=(xfce4 xfce4-goodies)
 DESKTOP_LXQT=(lxqt)
 DESKTOP_DDE=(deepin deepin-extra)
 
+GUIPKGS=(qemu ovmf \
+	ttf-droid ttf-dejavu \
+	xorg xorg-apps xorg-drivers xorg-xinit xf86-input-wacom \
+	gparted firefox pidgin pidgin-otr riot-web)
+
 case "${DESKTOP}" in
+	no)
+		DESKTOP=()
+		;;
 	mate)
 		DESKTOP=("${DESKTOP_MATE[@]}")
 		;;
@@ -24,9 +32,13 @@ case "${DESKTOP}" in
 		DESKTOP=("${DESKTOP_DDE[@]}")
 		;;
 	*)
-		DESKTOP=("${DESKTOP_MATE[@]}")
+		DESKTOP=()
 		;;
 esac
+
+if [[ "${#DESKTOP[@]}" -ne 0 ]]; then
+	DESKTOP+=("${GUIPKGS[@]}")
+fi
 
 pacman-key --init
 pacman-key --populate archlinux
@@ -44,17 +56,12 @@ pacman --noconfirm -Syu --needed \
 	git \
 	linux-headers dkms archiso \
 	wireguard-dkms wireguard-tools \
-	qemu flashrom debootstrap htop \
-	iasl dmidecode procinfo-ng efibootmgr ovmf \
+	flashrom debootstrap htop \
+	iasl dmidecode procinfo-ng efibootmgr \
 	picocom \
-	ttf-droid ttf-dejavu \
-	xorg xorg-apps xorg-drivers xorg-xinit "${DESKTOP[@]}" \
 	bash-completion zsh-completions \
-	xf86-input-wacom \
-	gparted \
-	firefox \
 	zstd \
-	pidgin pidgin-otr riot-web
+	"${DESKTOP[@]}"
 
 if /bin/ls /aur/*.pkg.tar.*; then
 	pacman --noconfirm -U /aur/*.pkg.tar.*

@@ -5,7 +5,7 @@ ROOTDIR="$(dirname $(realpath "$0"))"
 WORKDIR=/tmp/work
 ISO="$(realpath "$1")"
 MIRROR=
-DESKTOP=mate
+DESKTOP=nox
 COMP=gzip
 
 shift
