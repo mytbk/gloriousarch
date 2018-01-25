@@ -30,7 +30,12 @@ while [ -n "$1" ]; do
 			shift
 			;;
 		--comp)
-			COMP="${1/--comp}"
+			shift
+			COMP="$1"
+			shift
+			;;
+		--comp=*)
+			COMP="${1/--comp=}"
 			shift
 			;;
 		*)
