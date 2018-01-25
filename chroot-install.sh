@@ -64,7 +64,7 @@ pacman --noconfirm -Syu --needed \
 	"${DESKTOP[@]}"
 
 if /bin/ls /aur/*.pkg.tar.*; then
-	pacman --noconfirm -U /aur/*.pkg.tar.*
+	pacman --noconfirm -U --needed /aur/*.pkg.tar.*
 fi
 
 mkinitcpio -p archiso
