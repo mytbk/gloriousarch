@@ -16,6 +16,13 @@ The name `glorious` comes from `r/linuxmasterrace <https://www.reddit.com/r/linu
 Usage
 -----
 
+Dependencies:
+
+- squashfs-tools
+- xorriso
+
+To prevent you from screwing up your machine, you'd better use this script in a VM.
+
 You need root to run the install script, because chroot is needed. The command is very simple::
 
   sudo ./install.sh <archiso> [--mirror=<mirror>] [--desktop=<desktop>] [--comp=<gzip|xz>]
