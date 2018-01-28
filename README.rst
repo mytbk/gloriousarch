@@ -44,18 +44,25 @@ Packages
 
 I now have these tools in my Live CD:
 
-- a good desktop environment: now gloriousarch has MATE, Xfce, LXQt and DDE support
-- QEMU: to install other OS with an ISO image, including Windows (using my disk as virtual disk). This is the most glorious feature of this Live CD.
 - flashrom: to flash coreboot to my machine
-- gparted: the glorious partition manager
+- coreboot-utils: cbmem, inteltool, intelmetool, ectool, etc.
+- acpid and iasl: for handling ACPI things
+- htop: the glorious task manager
 - debootstrap: to install a Debian-based system easily
-- Firefox to access the Internet
-- Pidgin to chat, and it should support OTR
 - picocom: to access the serial console
 - WireGuard VPN
+
+For the Live CDs with a desktop environment, I have:
+
+- a good desktop environment: MATE, Xfce, LXDE-GTK3, LXQt or DDE
+- QEMU: to install other OS with an ISO image, including Windows (using my disk as virtual disk). This is the most glorious feature of this Live CD.
+- gparted: the glorious partition manager
+- Firefox to access the Internet
+- Riot web
+- Pidgin with OTR plugin
 
 
 Download
 --------
 
-I built a gloriousarch Xfce4 iso and uploaded it to `sourceforge <https://sourceforge.net/projects/garchiso/files/>`_. It's signed by a PGP key whose primary key fingerprint is 0x9E5B817BFF338DD701676C276DBD8BFE8600BEAA.
+I built a gloriousarch Xfce4 iso and uploaded it to `sourceforge <https://sourceforge.net/projects/garchiso/files/>`_. It's signed by a PGP key whose primary key fingerprint is 7079B481F04B5D8B65A0ECDEEA2DB82FE04A9403.
