@@ -2,25 +2,24 @@
 set -e
 
 MIRROR=${MIRROR:='http://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch'}
-DESKTOP_MATE=(mate mate-extra)
-DESKTOP_XFCE=(xfce4 xfce4-goodies)
 DESKTOP_LXQT=(lxqt)
 DESKTOP_DDE=(deepin deepin-extra)
 
 GUIPKGS=(qemu ovmf \
 	ttf-droid ttf-dejavu \
-	xorg xorg-apps xorg-drivers xorg-xinit xf86-input-wacom \
-	gparted firefox pidgin pidgin-otr riot-web)
+	xorg-server xorg-xrandr xorg-xrdb xorg-xev xorg-setxkbmap xorg-setxkbmap xorg-drivers xorg-xinit
+	gparted firefox pidgin pidgin-otr riot-web
+	leafpad)
 
 case "${DESKTOP}" in
 	no)
 		DESKTOP=()
 		;;
 	mate)
-		DESKTOP=("${DESKTOP_MATE[@]}")
+		DESKTOP=(mate mate-terminal)
 		;;
 	xfce)
-		DESKTOP=("${DESKTOP_XFCE[@]}")
+		DESKTOP=(xfce4)
 		;;
 	lxde-gtk3)
 		DESKTOP=(lxde-gtk3)
