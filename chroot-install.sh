@@ -66,6 +66,10 @@ if /bin/ls /aur/*.pkg.tar.*; then
 	pacman --noconfirm -U --needed /aur/*.pkg.tar.*
 fi
 
+# wireguard modules has been built, remove dkms and linux-headers
+pacman --noconfirm -Rdd dkms
+pacman --noconfirm -Rcsn linux-headers
+
 mkinitcpio -p archiso
 
 mv /etc/pacman.conf.bak /etc/pacman.conf
