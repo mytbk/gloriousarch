@@ -8,7 +8,7 @@ DESKTOP_DDE=(deepin deepin-extra)
 GUIPKGS=(qemu ovmf \
 	ttf-droid ttf-dejavu \
 	xorg-server xorg-xrandr xorg-xrdb xorg-xev xorg-setxkbmap xorg-setxkbmap xorg-drivers xorg-xinit
-	gparted firefox pidgin pidgin-otr riot-web
+	gparted firefox pidgin pidgin-otr pidgin-xmpp-receipts riot-web
 	leafpad)
 
 case "${DESKTOP}" in
