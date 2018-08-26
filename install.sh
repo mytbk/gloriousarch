@@ -63,9 +63,9 @@ cp -a mnt/arch/boot target/arch/
 
 unsquashfs mnt/arch/x86_64/airootfs.sfs
 
-mount -t proc none squashfs-root/proc
-mount --bind /dev squashfs-root/dev
-mount -t sysfs none squashfs-root/sys
+#mount -t proc none squashfs-root/proc
+#mount --bind /dev squashfs-root/dev
+#mount -t sysfs none squashfs-root/sys
 mount --bind "${PKGDIR}" squashfs-root/var/cache/pacman/pkg
 
 mkdir -p squashfs-root/aur
@@ -74,8 +74,10 @@ mount --bind "${ROOTDIR}/aur-packages" squashfs-root/aur
 cp -L /etc/resolv.conf squashfs-root/etc/resolv.conf
 cp "${ROOTDIR}/chroot-install.sh" squashfs-root/
 install -D "${ROOTDIR}/archiso.preset" squashfs-root/etc/mkinitcpio.d/
-chroot squashfs-root /usr/bin/env MIRROR="${MIRROR}" DESKTOP="${DESKTOP}" \
+cd squashfs-root
+systemd-nspawn /usr/bin/env MIRROR="${MIRROR}" DESKTOP="${DESKTOP}" \
 	/bin/bash /chroot-install.sh
+cd "${WORKDIR}"
 
 rm squashfs-root/chroot-install.sh
 install "${ROOTDIR}/xinitrc" squashfs-root/home/arch/.xinitrc
@@ -94,9 +96,9 @@ rm squashfs-root/boot/initramfs*
 
 umount squashfs-root/aur
 umount squashfs-root/var/cache/pacman/pkg
-umount squashfs-root/sys
-umount squashfs-root/dev
-umount squashfs-root/proc
+#umount squashfs-root/sys
+#umount squashfs-root/dev
+#umount squashfs-root/proc
 
 mksquashfs squashfs-root target/arch/x86_64/airootfs.sfs -comp $COMP
 umount mnt

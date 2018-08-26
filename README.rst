@@ -18,6 +18,7 @@ Usage
 
 Dependencies:
 
+- systemd (for systemd-nspawn)
 - squashfs-tools
 - xorriso
 
