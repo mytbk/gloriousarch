@@ -82,5 +82,5 @@ if ! grep '^arch:' /etc/passwd; then
 	sed -i 's/root/arch/g' /etc/systemd/system/getty@tty1.service.d/autologin.conf
 fi
 
-gpgconf --homedir /etc/pacman.d/gnupg/ --kill gpg-agent
+gpgconf --homedir /etc/pacman.d/gnupg/ --kill gpg-agent || echo 'Failed to kill gpg-agent'
 rm -f /etc/udev/rules.d/81-dhcpcd.rules
