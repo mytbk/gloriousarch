@@ -60,6 +60,7 @@ pacman --noconfirm -Syu --needed \
 	picocom \
 	bash-completion zsh-completions \
 	zstd \
+	chntpw radare2 \
 	"${DESKTOP[@]}"
 
 if /bin/ls /aur/*.pkg.tar.*; then
