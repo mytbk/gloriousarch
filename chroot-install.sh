@@ -61,6 +61,7 @@ pacman --noconfirm -Syu --needed \
 	bash-completion zsh-completions \
 	zstd \
 	chntpw radare2 \
+	fwupd \
 	"${DESKTOP[@]}"
 
 if /bin/ls /aur/*.pkg.tar.*; then
