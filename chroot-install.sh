@@ -53,8 +53,8 @@ pacman --noconfirm -Sy linux
 pacman --noconfirm -Syu --needed \
 	base-devel \
 	git \
-	linux-headers dkms archiso \
-	wireguard-dkms wireguard-tools \
+	archiso \
+	wireguard-arch wireguard-tools \
 	flashrom debootstrap htop \
 	acpid iasl dmidecode procinfo-ng efibootmgr \
 	picocom \
@@ -69,8 +69,8 @@ if /bin/ls /aur/*.pkg.tar.*; then
 fi
 
 # wireguard modules has been built, remove dkms and linux-headers
-pacman --noconfirm -Rdd dkms
-pacman --noconfirm -Rcsn linux-headers
+#pacman --noconfirm -Rdd dkms
+#pacman --noconfirm -Rcsn linux-headers
 
 mkinitcpio -p archiso
 
