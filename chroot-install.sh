@@ -22,7 +22,7 @@ case "${DESKTOP}" in
 		DESKTOP=(xfce4)
 		;;
 	lxde-gtk3)
-		DESKTOP=(lxde-gtk3)
+		DESKTOP=(lxde-common lxlauncher-gtk3 lxpanel-gtk3 lxsession-gtk3 lxterminal openbox pcmanfm-gtk3)
 		;;
 	lxqt)
 		DESKTOP=("${DESKTOP_LXQT[@]}")
