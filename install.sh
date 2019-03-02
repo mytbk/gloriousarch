@@ -6,7 +6,7 @@ WORKDIR=/tmp/work
 ISO="$(realpath "$1")"
 MIRROR=
 DESKTOP=nox
-COMP=gzip
+COMP=xz
 
 shift
 while [ -n "$1" ]; do
