@@ -1,0 +1,14 @@
+#!/bin/bash
+
+ROOTPATH=/mnt
+
+rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/var/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / "$ROOTPATH"
+
+# reinstall linux
+arch-chroot "$ROOTPATH" pacman -S --noconfirm linux
+
+genfstab -U "$ROOTPATH" | tee "$ROOTPATH/etc/fstab"
+
+SYSTEMD="$ROOTPATH/etc/systemd/system"
+rm -rf "$SYSTEMD/getty@tty1.service.d"
+rm "$SYSTEMD"/*.{service,mount} "$SYSTEMD"/multi-user.target.wants/*.service

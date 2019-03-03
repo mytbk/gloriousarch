@@ -89,3 +89,6 @@ fi
 
 gpgconf --homedir /etc/pacman.d/gnupg/ --kill gpg-agent || echo 'Failed to kill gpg-agent'
 rm -f /etc/udev/rules.d/81-dhcpcd.rules
+
+# save the kernel package
+cp "/var/cache/pacman/pkg/linux-$(pacman -Q linux|cut -d ' ' -f2)-x86_64.pkg.tar.xz" /opt/

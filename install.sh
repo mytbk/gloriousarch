@@ -80,6 +80,7 @@ systemd-nspawn /usr/bin/env MIRROR="${MIRROR}" DESKTOP="${DESKTOP}" \
 cd "${WORKDIR}"
 
 rm squashfs-root/chroot-install.sh
+install "${ROOTDIR}/syncarch" squashfs-root/usr/local/bin/syncarch
 install "${ROOTDIR}/xinitrc" squashfs-root/home/arch/.xinitrc
 install -d squashfs-root/home/arch/Desktop
 install "${ROOTDIR}/Riot.desktop" squashfs-root/home/arch/Desktop/Riot.desktop
@@ -96,6 +97,8 @@ rm squashfs-root/boot/initramfs*
 
 umount squashfs-root/aur
 umount squashfs-root/var/cache/pacman/pkg
+rmdir squashfs-root/aur
+mv squashfs-root/opt/*.pkg.tar* squashfs-root/var/cache/pacman/pkg/
 #umount squashfs-root/sys
 #umount squashfs-root/dev
 #umount squashfs-root/proc
