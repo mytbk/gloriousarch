@@ -30,6 +30,9 @@ case "${DESKTOP}" in
 	dde)
 		DESKTOP=("${DESKTOP_DDE[@]}")
 		;;
+	budgie)
+		DESKTOP=(budgie-desktop)
+		;;
 	*)
 		DESKTOP=()
 		;;
