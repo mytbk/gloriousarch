@@ -18,7 +18,7 @@ case "${DESKTOP}" in
 	mate)
 		DESKTOP=(mate mate-terminal)
 		;;
-	xfce)
+	xfce*)
 		DESKTOP=(xfce4)
 		;;
 	lxde-gtk3)
