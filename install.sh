@@ -69,7 +69,7 @@ unsquashfs mnt/arch/x86_64/airootfs.sfs
 mount --bind "${PKGDIR}" squashfs-root/var/cache/pacman/pkg
 
 mkdir -p squashfs-root/aur
-mount --bind "${ROOTDIR}/aur-packages" squashfs-root/aur
+mount --bind -o ro "${ROOTDIR}/aur-packages" squashfs-root/aur
 
 cp -L /etc/resolv.conf squashfs-root/etc/resolv.conf
 cp "${ROOTDIR}/chroot-install.sh" squashfs-root/
