@@ -57,7 +57,7 @@ pacman --noconfirm -Syu --needed \
 	base-devel \
 	git \
 	archiso \
-	wireguard-arch wireguard-tools \
+	wireguard-tools \
 	flashrom debootstrap htop \
 	acpid iasl dmidecode procinfo-ng efibootmgr \
 	picocom \
