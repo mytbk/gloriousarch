@@ -62,7 +62,7 @@ pacman --noconfirm -Syu --needed \
 	acpid iasl dmidecode procinfo-ng efibootmgr \
 	picocom \
 	bash-completion zsh-completions \
-	zstd \
+	networkmanager \
 	chntpw radare2 \
 	fwupd \
 	"${DESKTOP[@]}"
@@ -90,7 +90,8 @@ fi
 gpgconf --homedir /etc/pacman.d/gnupg/ --kill gpg-agent || echo 'Failed to kill gpg-agent'
 rm -f /etc/udev/rules.d/81-dhcpcd.rules
 
+systemctl enable NetworkManager
 systemctl enable acpid
 
 # save the kernel package
-cp "/var/cache/pacman/pkg/linux-$(pacman -Q linux|cut -d ' ' -f2)-x86_64.pkg.tar.xz" /opt/
+cp "/var/cache/pacman/pkg/linux-$(pacman -Q linux|cut -d ' ' -f2)-x86_64.pkg.tar.zst" /opt/
