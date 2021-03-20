@@ -8,7 +8,7 @@ DESKTOP_DDE=(deepin deepin-extra)
 GUIPKGS=(qemu ovmf \
 	ttf-droid ttf-dejavu \
 	xorg-server xorg-xrandr xorg-xrdb xorg-xev xorg-setxkbmap xorg-setxkbmap xorg-drivers xorg-xinit
-	gparted firefox pidgin pidgin-otr pidgin-xmpp-receipts riot-web
+	gparted firefox pidgin pidgin-otr pidgin-xmpp-receipts element-desktop
 	leafpad)
 
 case "${DESKTOP}" in
@@ -65,6 +65,7 @@ pacman --noconfirm -Syu --needed \
 	networkmanager \
 	chntpw radare2 \
 	fwupd \
+	wimlib \
 	"${DESKTOP[@]}"
 
 if /bin/ls /aur/*.pkg.tar.*; then
@@ -75,7 +76,7 @@ fi
 #pacman --noconfirm -Rdd dkms
 #pacman --noconfirm -Rcsn linux-headers
 
-mkinitcpio -p archiso
+mkinitcpio -p linux
 
 mv /etc/pacman.conf.bak /etc/pacman.conf
 mv /etc/pacman.d/mirrorlist.bak /etc/pacman.d/mirrorlist
