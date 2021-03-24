@@ -1,69 +1,46 @@
-Oh my Glorious Arch
+ChinGNUx 启动镜像
 ===================
 
-`Arch is the best! <https://wiki.archlinux.org/index.php/Arch_is_the_best>`_
+ChinGNUx 是一个面向中文用户的操作系统，目前本操作系统是一个定制的 Arch Linux 操作系统。
 
-I need a good Live CD, but I still cannot find a perfect one for me.
+本项目包含用于从 Arch Linux 启动镜像构建 ChinGNUx 启动镜像的脚本，它基于 `gloriousarch <https://github.com/mytbk/gloriousarch>`__ 项目。
 
-- `SystemRescueCd <https://www.system-rescue-cd.org/>`_ is awesome, but it's Gentoo-based and not so easy to extend it. Now it's based on Arch, and it becomes bigger and lacks some tools I need.
-- Debian-based distributions are easy to make, but I don't like the style of deb/rpm packages. Well, `Grml <https://grml.org/>`__ is awesome for admins.
-- Arch is glorious, but its Live CD is a bit simple.
-
-So now I'll make another Arch Live CD of my own. I'll make a new airootfs.sfs from any other GNU/Linux distribution, and package it in an iso file. My `liveusb-builder <https://github.com/mytbk/liveusb-builder>`_ also supports it.
-
-The name `glorious` comes from `r/linuxmasterrace <https://www.reddit.com/r/linuxmasterrace>`_.
-
-Usage
+用法
 -----
 
-Dependencies:
+要使用此脚本，你需要一个包含以下软件的 GNU/Linux 操作系统：
 
-- systemd (for systemd-nspawn)
+- systemd
 - squashfs-tools
 - xorriso
 
-To prevent you from screwing up your machine, you'd better use this script in a VM.
-
-You need root to run the install script, because chroot is needed. The command is very simple::
+制作 ChinGNUx 镜像需要以 root 的身份执行脚本，如果担心该脚本破坏你的系统，可以在虚拟机中使用。在源码目录中执行以下命令即可创建 ChinGNUx 镜像::
 
   sudo ./install.sh <archiso> [--mirror=<mirror>] [--desktop=<desktop>] [--comp=<gzip|xz>]
 
-To add more packages, you can put your Arch packages to ``aur-packages/``.
+默认参数为使用TUNA镜像，无桌面环境，使用xz压缩，具体支持的桌面环境参见 `<chroot-install.sh>`__.
 
-The format of <mirror> is the string after ``Server =`` in /etc/pacman.d/mirrorlist.
+用法示例::
 
-<desktop> can be ``mate``, ``xfce``, ``dde``, ``lxde-gtk3`` and ``lxqt``.
+  sudo ./install.sh archlinux-2020.03.01-x86_64.iso --mirror 'http://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch' --desktop=lxqt
 
-Default mirror and desktop is TUNA mirror and MATE desktop.
-
-Example::
-
-  sudo ./install.sh archlinux-2017.05.01-x86_64.iso --mirror 'http://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch' --desktop=lxqt
-
-Packages
+软件包
 --------
 
-I now have these tools in my Live CD:
+ChinGNUx 启动镜像包含以下软件包：
 
-- flashrom: to flash coreboot to my machine
-- coreboot-utils: cbmem, inteltool, intelmetool, ectool, etc.
-- acpid and iasl: for handling ACPI things
-- htop: the glorious task manager
-- debootstrap: to install a Debian-based system easily
-- picocom: to access the serial console
+- flashrom: 固件刷写工具
+- coreboot-utils: inteltool, intelmetool, ectool, nvramtool, cbmem 等工具
+- acpid, iasl: ACPI 工具
+- htop: 任务管理器
+- debootstrap: 用于安装多种基于 Debian 的操作系统
+- picocom: 串口访问工具
 - WireGuard VPN
 
-For the Live CDs with a desktop environment, I have:
+如果启动镜像有桌面环境，还会包含以下软件包:
 
-- a good desktop environment: MATE, Xfce, LXDE-GTK3, LXQt or DDE
-- QEMU: to install other OS with an ISO image, including Windows (using my disk as virtual disk). This is the most glorious feature of this Live CD. `And Grml adopted my idea. <https://github.com/grml/grml-live/issues/71>`__
-- gparted: the glorious partition manager
-- Firefox to access the Internet
-- Riot web
-- Pidgin with OTR plugin
-
-
-Download
---------
-
-I built a gloriousarch Xfce4 iso and uploaded it to `sourceforge <https://sourceforge.net/projects/garchiso/files/>`_. It's signed by a PGP key whose primary key fingerprint is 7079B481F04B5D8B65A0ECDEEA2DB82FE04A9403.
+- QEMU: 可以利用虚拟机安装系统到物理机的硬盘上，参见此 `Grml issue <https://github.com/grml/grml-live/issues/71>`__
+- gparted: 分区工具
+- Firefox
+- Element
+- Pidgin
