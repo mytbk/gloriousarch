@@ -9,7 +9,8 @@ GUIPKGS=(qemu ovmf \
 	ttf-droid ttf-dejavu \
 	xorg-server xorg-xrandr xorg-xrdb xorg-xev xorg-setxkbmap xorg-setxkbmap xorg-drivers xorg-xinit
 	gparted firefox pidgin pidgin-otr pidgin-xmpp-receipts element-desktop
-	leafpad)
+	leafpad
+	network-manager-applet)
 
 case "${DESKTOP}" in
 	no)
