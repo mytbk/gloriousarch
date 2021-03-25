@@ -112,10 +112,10 @@ xorriso -as mkisofs \
 	-eltorito-catalog syslinux/boot.cat \
 	-no-emul-boot -boot-load-size 4 -boot-info-table \
 	-isohybrid-mbr target/syslinux/isohdpfx.bin \
-	-output "gloriousarch-${DESKTOP}.iso" \
+	-output "chingnux-${DESKTOP}.iso" \
 	target/
 
-echo "gloriousarch.iso is at ${WORKDIR}/gloriousarch-${DESKTOP}.iso"
+echo "Live CD created is at ${WORKDIR}/chingnux-${DESKTOP}.iso"
 printf 'clean up...'
 rm -rf squashfs-root target
 echo 'done'
