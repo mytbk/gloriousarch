@@ -10,6 +10,7 @@ GUIPKGS=(qemu ovmf \
 	xorg-server xorg-xrandr xorg-xrdb xorg-xev xorg-setxkbmap xorg-setxkbmap xorg-drivers xorg-xinit
 	gparted firefox pidgin pidgin-otr pidgin-xmpp-receipts element-desktop
 	leafpad
+	network-manager-applet
 	fcitx-im fcitx-sunpinyin fcitx-configtool)
 
 case "${DESKTOP}" in
