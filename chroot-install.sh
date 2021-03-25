@@ -82,11 +82,11 @@ mkinitcpio -p linux
 mv /etc/pacman.conf.bak /etc/pacman.conf
 mv /etc/pacman.d/mirrorlist.bak /etc/pacman.d/mirrorlist
 
-if ! grep '^arch:' /etc/passwd; then
-	useradd -m -G wheel,uucp arch
-	echo arch:arch | chpasswd
+if ! grep '^chingnux:' /etc/passwd; then
+	useradd -m -G wheel,uucp chingnux
+	echo chingnux:chingnux | chpasswd
 	sed -i 's/^# %wheel/%wheel/g' /etc/sudoers
-	sed -i 's/root/arch/g' /etc/systemd/system/getty@tty1.service.d/autologin.conf
+	sed -i 's/root/chingnux/g' /etc/systemd/system/getty@tty1.service.d/autologin.conf
 fi
 
 gpgconf --homedir /etc/pacman.d/gnupg/ --kill gpg-agent || echo 'Failed to kill gpg-agent'
