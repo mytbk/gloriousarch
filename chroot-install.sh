@@ -9,7 +9,8 @@ GUIPKGS=(qemu ovmf \
 	ttf-droid ttf-dejavu \
 	xorg-server xorg-xrandr xorg-xrdb xorg-xev xorg-setxkbmap xorg-setxkbmap xorg-drivers xorg-xinit
 	gparted firefox pidgin pidgin-otr pidgin-xmpp-receipts element-desktop
-	leafpad)
+	leafpad
+	fcitx-im fcitx-sunpinyin fcitx-configtool)
 
 case "${DESKTOP}" in
 	no)
@@ -96,3 +97,9 @@ systemctl enable acpid
 
 # save the kernel package
 cp "/var/cache/pacman/pkg/linux-$(pacman -Q linux|cut -d ' ' -f2)-x86_64.pkg.tar.zst" /opt/
+
+cat >> /etc/environment << EOF
+XMODIFIERS="@im=fcitx"
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+EOF
