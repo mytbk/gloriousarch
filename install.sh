@@ -82,8 +82,10 @@ cd "${WORKDIR}"
 rm squashfs-root/chroot-install.sh
 install "${ROOTDIR}/syncarch" squashfs-root/usr/local/bin/syncarch
 install "${ROOTDIR}/xinitrc" squashfs-root/home/chingnux/.xinitrc
+install -D -m 600 "${ROOTDIR}/fcitx-profile" squashfs-root/home/chingnux/.config/fcitx/profile
 chroot squashfs-root chown -R chingnux:chingnux \
-	/home/chingnux/.xinitrc
+	/home/chingnux/.xinitrc \
+	/home/chingnux/.config
 cat "${ROOTDIR}/motd" >> squashfs-root/etc/motd
 mv squashfs-root/boot/vmlinuz-linux target/arch/boot/x86_64/
 mv squashfs-root/boot/initramfs-linux.img target/arch/boot/x86_64/
