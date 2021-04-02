@@ -1,3 +1,7 @@
 
 Welcome to ChinGNUx!
 The password of chingnux is chingnux.
+
+Run startx to go into the desktop. You can connect to the network with
+NetworkManager using nmtui/nmcli or the NetworkManager applet on the
+desktop panel.
