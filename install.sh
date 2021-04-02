@@ -5,7 +5,7 @@ ROOTDIR="$(dirname $(realpath "$0"))"
 WORKDIR=/tmp/work
 ISO="$(realpath "$1")"
 MIRROR=
-DESKTOP=nox
+DESKTOP=xfce
 COMP=xz
 
 shift
@@ -81,6 +81,7 @@ cd "${WORKDIR}"
 
 rm squashfs-root/chroot-install.sh
 install "${ROOTDIR}/syncarch" squashfs-root/usr/local/bin/syncarch
+install "${ROOTDIR}/setup-chingnux" squashfs-root/usr/local/bin/setup-chingnux
 install "${ROOTDIR}/xinitrc" squashfs-root/home/chingnux/.xinitrc
 install -D -m 600 "${ROOTDIR}/fcitx-profile" squashfs-root/home/chingnux/.config/fcitx/profile
 chroot squashfs-root chown -R chingnux:chingnux \

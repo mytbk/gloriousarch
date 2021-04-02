@@ -1,0 +1,93 @@
+#!/bin/bash
+set -e
+
+# ====== TODO: remove these lines after reading the whole script ======
+notice() {
+	cat << EOF
+Welcome to ChinGNUx!
+
+The ChinGNUx installer is not completed yet. You can use this script to 
+proceed most of the installation steps, but there are still some procedures
+missing.
+
+Before using this script (/usr/local/bin/setup-chingnux), copy it to
+somewhere and edit it. Read all the TODOs to know what's needed.
+EOF
+	exit 1
+}
+notice
+
+# ====== End of the things to remove ==================================
+
+# TODO: you need to partition your disk first, mount all the things to /mnt
+
+# TODO: set mirrorlist first
+# update package list, so we can use pacman to filter packages
+pacman -Sy
+
+systempkg=(base base-devel grub git htop acpid iasl dmidecode procinfo-ng efibootmgr bash-completion)
+# TODO: we use linux or linux-lts, according to what hardware is installed
+# TODO: check if we need linux-firmware
+kernel=(linux linux-firmware)
+util=(lesspipe vim radare2 unarchiver)
+desktop=(leafpad networkmanager network-manager-applet fcitx-im fcitx-sunpinyin fcitx-configtool)
+x11=(xorg xorg-drivers lxdm)
+audio=(pipewire-pulse pavucontrol)
+# we need xfce4-notifyd for desktop notification
+# TODO: do we need pulseaudio-alsa?
+xfce4=(xfce4 xfce4-notifyd xfce4-pulseaudio-plugin)
+netapp=(firefox-i18n-zh-cn firefox-ublock-origin
+	thunderbird-i18n-zh-cn thunderbird-extension-enigmail
+	pidgin pidgin-otr pidgin-xmpp-receipts
+	element-desktop)
+fonts=($(pacman -Ssq '^adobe-source-han') ttf-inconsolata)
+
+# We don't install the following, but they're useful packages
+writing=(retext libreoffice-fresh-zh-cn)
+multimedia=(mpv obs-studio geeqie)
+drawing=(krita gimp inkscape dia mtpaint)
+game=(puzzles)
+
+# TODO: install gvfs-mtp, udevil...
+
+pacstrap /mnt ${systempkg[@]} ${kernel[@]} ${util[@]} ${desktop[@]} ${x11[@]} ${audio[@]} ${xfce4[@]} ${netapp[@]} ${fonts[@]}
+
+genfstab -U /mnt | tee /mnt/etc/fstab
+
+# set host name
+echo chingnux > /mnt/etc/hostname
+
+cat >> /mnt/etc/locale.gen << EOF
+en_US.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8
+EOF
+arch-chroot /mnt locale-gen
+
+# for UEFI, mounting ESP to /boot/efi will let grub-install automatically find the ESP
+# TODO: install grub
+arch-chroot /mnt grub-install /dev/vda # how to get the device?
+arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
+
+# TODO: user and password
+
+arch-chroot /mnt systemctl enable lxdm
+arch-chroot /mnt systemctl enable NetworkManager
+
+# configure lxdm
+#useradd -m -d /var/lib/lxdm -r -c "Lightweight X11 Display Manager"
+arch-chroot /mnt systemd-sysusers
+cat > /mnt/var/lib/lxdm/lxdm.conf << EOF
+[base]
+last_session=/usr/share/xsessions/xfce.desktop
+last_lang=zh_CN.UTF-8
+last_langs=zh_CN.UTF-8
+EOF
+arch-chroot /mnt chown lxdm:lxdm /var/lib/lxdm/lxdm.conf
+
+# other settings
+ln -s vim /mnt/usr/bin/vi
+cat >> /mnt/etc/environment << EOF
+XMODIFIERS="@im=fcitx"
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+EOF
