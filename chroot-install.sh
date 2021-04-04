@@ -32,7 +32,7 @@ case "${DESKTOP}" in
 		DESKTOP=("${DESKTOP_DDE[@]}")
 		;;
 	budgie)
-		DESKTOP=(budgie-desktop)
+		DESKTOP=(budgie-desktop gnome-terminal)
 		;;
 	*)
 		DESKTOP=()
