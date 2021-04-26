@@ -25,19 +25,17 @@ notice
 # update package list, so we can use pacman to filter packages
 pacman -Sy
 
-systempkg=(base base-devel grub git htop acpid iasl dmidecode procinfo-ng efibootmgr bash-completion)
+systempkg=(base base-devel grub git openssh htop acpid iasl dmidecode procinfo-ng efibootmgr bash-completion)
 # TODO: we use linux or linux-lts, according to what hardware is installed
 # TODO: check if we need linux-firmware
 kernel=(linux linux-firmware)
 util=(lesspipe vim radare2 unarchiver)
-desktop=(leafpad networkmanager network-manager-applet fcitx-im fcitx-sunpinyin fcitx-configtool)
+desktop=(leafpad networkmanager network-manager-applet fcitx-im fcitx-sunpinyin fcitx-configtool gvfs)
 x11=(xorg xorg-drivers lxdm)
 audio=(pipewire-pulse pavucontrol)
-# we need xfce4-notifyd for desktop notification
-# TODO: do we need pulseaudio-alsa?
 xfce4=(xfce4 xfce4-notifyd xfce4-pulseaudio-plugin)
 netapp=(firefox-i18n-zh-cn firefox-ublock-origin
-	thunderbird-i18n-zh-cn thunderbird-extension-enigmail
+	thunderbird-i18n-zh-cn
 	pidgin pidgin-otr pidgin-xmpp-receipts
 	element-desktop)
 fonts=($(pacman -Ssq '^adobe-source-han') ttf-inconsolata)
