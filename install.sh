@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+# check if the needed tools exist
+mksquashfs -version | grep 'mksquashfs version'
+xorriso -version 2>/dev/null | grep 'xorriso version'
+
 ROOTDIR="$(dirname $(realpath "$0"))"
 WORKDIR=/tmp/work
 ISO="$(realpath "$1")"
