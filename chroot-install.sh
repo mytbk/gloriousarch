@@ -70,6 +70,9 @@ pacman --noconfirm -Syu --needed \
 	wimlib \
 	"${DESKTOP[@]}"
 
+# rm archinstall to install the git version
+pacman -R --noconfirm archinstall
+
 if /bin/ls /aur/*.pkg.tar.*; then
 	pacman --noconfirm -U --needed /aur/*.pkg.tar.*
 fi
