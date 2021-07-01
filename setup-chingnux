@@ -30,7 +30,7 @@ systempkg=(base base-devel grub git openssh htop acpid iasl dmidecode procinfo-n
 # TODO: check if we need linux-firmware
 kernel=(linux linux-firmware)
 util=(lesspipe vim radare2 unarchiver)
-desktop=(leafpad networkmanager network-manager-applet fcitx-im fcitx-sunpinyin fcitx-configtool gvfs)
+desktop=(leafpad networkmanager ppp network-manager-applet fcitx-im fcitx-sunpinyin fcitx-configtool gvfs)
 x11=(xorg xorg-drivers lxdm)
 audio=(pipewire-pulse pavucontrol)
 xfce4=(xfce4 xfce4-notifyd xfce4-pulseaudio-plugin)
@@ -41,7 +41,7 @@ netapp=(firefox-i18n-zh-cn firefox-ublock-origin
 fonts=($(pacman -Ssq '^adobe-source-han') ttf-inconsolata)
 
 # We don't install the following, but they're useful packages
-writing=(retext libreoffice-fresh-zh-cn)
+writing=(retext libreoffice-fresh-zh-cn mupdf)
 multimedia=(mpv obs-studio geeqie)
 drawing=(krita gimp inkscape dia mtpaint)
 game=(puzzles)
