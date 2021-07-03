@@ -25,12 +25,12 @@ notice
 # update package list, so we can use pacman to filter packages
 pacman -Sy
 
-systempkg=(base base-devel grub git openssh htop acpid iasl dmidecode procinfo-ng efibootmgr bash-completion)
+systempkg=(base base-devel grub git openssh htop acpid iasl dmidecode efibootmgr bash-completion)
 # TODO: we use linux or linux-lts, according to what hardware is installed
 # TODO: check if we need linux-firmware
 kernel=(linux linux-firmware)
 util=(lesspipe vim radare2 unarchiver)
-desktop=(leafpad networkmanager ppp network-manager-applet fcitx-im fcitx-sunpinyin fcitx-configtool gvfs)
+desktop=(leafpad networkmanager ppp network-manager-applet fcitx-im fcitx-sunpinyin fcitx-configtool gvfs gvfs-mtp mupdf mpv puzzles)
 x11=(xorg xorg-drivers lxdm)
 audio=(pipewire-pulse pavucontrol)
 xfce4=(xfce4 xfce4-notifyd xfce4-pulseaudio-plugin)
@@ -41,12 +41,11 @@ netapp=(firefox-i18n-zh-cn firefox-ublock-origin
 fonts=($(pacman -Ssq '^adobe-source-han') ttf-inconsolata)
 
 # We don't install the following, but they're useful packages
-writing=(retext libreoffice-fresh-zh-cn mupdf)
-multimedia=(mpv obs-studio geeqie)
+writing=(retext libreoffice-fresh-zh-cn)
+multimedia=(obs-studio geeqie)
 drawing=(krita gimp inkscape dia mtpaint)
-game=(puzzles)
 
-# TODO: install gvfs-mtp, udevil...
+# TODO: install udevil...
 
 pacstrap /mnt ${systempkg[@]} ${kernel[@]} ${util[@]} ${desktop[@]} ${x11[@]} ${audio[@]} ${xfce4[@]} ${netapp[@]} ${fonts[@]}
 
