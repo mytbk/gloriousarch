@@ -86,6 +86,7 @@ cd "${WORKDIR}"
 rm squashfs-root/chroot-install.sh
 install "${ROOTDIR}/syncarch" squashfs-root/usr/local/bin/syncarch
 install "${ROOTDIR}/setup-chingnux" squashfs-root/usr/local/bin/setup-chingnux
+install "${ROOTDIR}/chingnux-install" squashfs-root/usr/local/bin/chingnux-install
 install "${ROOTDIR}/xinitrc" squashfs-root/home/chingnux/.xinitrc
 install -D -m 600 "${ROOTDIR}/fcitx-profile" squashfs-root/home/chingnux/.config/fcitx/profile
 install -D -m 644 "${ROOTDIR}/chingnux.json" squashfs-root/opt/chingnux.json
