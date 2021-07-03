@@ -1,9 +1,10 @@
 Changelog
 ===============
 
-2021.05:
+next version:
 
-- installer based on guided installer
-- use fcitx5?
+- fcitx5?
+
+2021.07: add initial guided installer config for guided.py
 
 2021.04.02: first version
